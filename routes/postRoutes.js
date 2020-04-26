@@ -21,7 +21,7 @@ postRoutes.get('/',async(req,res,next)=>{
 
 postRoutes.get('/category/',async(req,res,next)=>{
     try{
-    var data = await Posts.find({"category":req.body.category});
+    var data = await Posts.find({category:req.body.category});
     res.send(data);
     }
     catch(err)
