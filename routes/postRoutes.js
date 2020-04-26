@@ -19,6 +19,20 @@ postRoutes.get('/',async(req,res,next)=>{
 
 });
 
+postRoutes.get('/category/',async(req,res,next)=>{
+    try{
+    var data = await Posts.find({"category":req.body.category});
+    res.send(data);
+    }
+    catch(err)
+    {
+        res.status(404).json({
+            "message":err
+        });
+    }
+
+});
+
 postRoutes.post('/',checktoken,async(req,res,next)=>{
     try{
     data = await Posts.find({slug:req.body.slug});
